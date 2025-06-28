@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zekisys - Driven by Your Success</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease-out;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .section {
+            padding: 60px 60px;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            border-radius: 2px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71, #3498db);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .tech-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-list li {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .project-card.completed {
+            border-color: #2ecc71;
+        }
+
+        .project-card.in-progress {
+            border-color: #f39c12;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .status-completed {
+            background: #d5f4e6;
+            color: #27ae60;
+        }
+
+        .status-progress {
+            background: #fef9e7;
+            color: #f39c12;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            padding: 20px;
+        }
+
+        .contact-item p {
+            color: #000;
+        }
+
+        .contact-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #f39c12;
+        }
+
+        .footer {
+            background: #1a252f;
+            color: white;
+            padding: 30px 60px;
+            text-align: center;
+        }
+
+        .product-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 30px;
+            }
+            
+            .section {
+                padding: 40px 30px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="logo">Zekisys</h1>
+                <p class="tagline">Driven by your success</p>
+                <p class="about-text">
+                    Zekisys is a modern tech company founded by four partners with over 60 years of combined experience in mobile development, open-source technologies, Microsoft solutions, and software testing. Our mission is to deliver agile, scalable, and high-quality technology solutions that drive your success.
+                </p>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <h3>Backend Development</h3>
+                    <p><strong>3 Expert Developers</strong></p>
+                    <p>Specializing in Microsoft (.NET), Python, and PHP technologies to build robust, scalable backend solutions.</p>
+                </div>
+                <div class="team-card">
+                    <h3>Frontend Development</h3>
+                    <p><strong>2 UI/UX Specialists</strong></p>
+                    <p>Creating engaging user experiences with Angular and React frameworks for modern web applications.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-style: italic; color: #666;">
+                We work in agile, collaborative teams to ensure efficient and client-focused delivery.
+            </p>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 class="service-title">Mobile Development</h3>
+                    <p>Cross-platform and native mobile solutions tailored to your business needs.</p>
+                    <ul class="tech-list">
+                        <li>iOS (Swift)</li>
+                        <li>Flutter</li>
+                        <li>Android (Java)</li>
+                        <li>IoT</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3 class="service-title">Web Development</h3>
+                    <p>Full-stack web development with modern technologies and cloud integration.</p>
+                    <ul class="tech-list">
+                        <li>PHP</li>
+                        <li>Python</li>
+                        <li>.NET Core</li>
+                        <li>Azure</li>
+                        <li>AWS</li>
+                        <li>Angular</li>
+                        <li>React</li>
+                        <li>Vue</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3 class="service-title">Database Solutions</h3>
+                    <p>Robust data management and business intelligence solutions.</p>
+                    <ul class="tech-list">
+                        <li>MS SQL</li>
+                        <li>MySQL</li>
+                        <li>Oracle</li>
+                        <li>PostgreSQL</li>
+                        <li>Power BI</li>
+                        <li>SSRS</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h3 class="service-title">Quality Assurance</h3>
+                    <p>Comprehensive testing solutions ensuring reliability and security.</p>
+                    <ul class="tech-list">
+                        <li>Playwright</li>
+                        <li>Selenium</li>
+                        <li>Appium</li>
+                        <li>Burp Suite</li>
+                        <li>OWASP ZAP</li>
+                        <li>JMeter</li>
+                        <li>k6 + Grafana</li>
+                        <li>testRigor</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <h2 class="section-title">Project Snapshot</h2>
+            <div class="projects-grid">
+                <div class="project-card completed">
+                    <span class="project-status status-completed">✓ Completed</span>
+                    <h3>CRM Phase I</h3>
+                    <p>Comprehensive customer relationship management system with advanced features.</p>
+                    <ul class="tech-list">
+                        <li>.NET Core</li>
+                        <li>MS SQL</li>
+                        <li>React</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                        Features: Customer Management, User Administration, Order Processing, Payment Integration, Admin Dashboard
+                    </p>
+                </div>
+                
+                <div class="project-card completed">
+                    <span class="project-status status-completed">✓ Completed</span>
+                    <h3>Billing System</h3>
+                    <p>Complete billing and inventory management solution for businesses.</p>
+                    <ul class="tech-list">
+                        <li>Python</li>
+                        <li>HTML/CSS</li>
+                        <li>PostgreSQL</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                        Features: GST Compliance, Stock Management, Product Catalog, Invoice Generation
+                    </p>
+                </div>
+                
+                <div class="project-card in-progress">
+                    <span class="project-status status-progress">⏳ In Progress</span>
+                    <h3>Chore Management</h3>
+                    <p>Task and workflow management system with client-owned resource model.</p>
+                    <ul class="tech-list">
+                        <li>Angular</li>
+                        <li>PHP</li>
+                        <li>MS SQL</li>
+                    </ul>
+                </div>
+                
+                <div class="project-card in-progress">
+                    <span class="project-status status-progress">⏳ In Progress</span>
+                    <h3>CRM Phase II</h3>
+                    <p>Advanced CRM features with warehouse management and business intelligence.</p>
+                    <ul class="tech-list">
+                        <li>.NET Core</li>
+                        <li>MS SQL</li>
+                        <li>React</li>
+                        <li>Power BI</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                        Features: Warehouse Management, Order Tracking, Advanced Analytics
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Highlight -->
+        <section class="section">
+            <div class="product-highlight">
+                <h2 style="margin-bottom: 20px; font-size: 2rem;">Our Product</h2>
+                <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Order & Task Management System</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Our in-house solution designed to streamline assignments, order tracking, and operational workflows specifically for small and medium businesses. Experience enhanced productivity with our comprehensive management platform.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section section">
+            <h2 class="section-title" style="color: black;">Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>📍 Address</h4>
+                    <p>32A, Udayampalayam, Coimbatore - 641028</p>
+                </div>
+                <div class="contact-item">
+                    <h4>🌐 Online</h4>
+                    <p>Website: www.zekisys.com<br>
+                    Email: info@zekisys.com</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📱 Social Media</h4>
+                    <p>Instagram: @Zekisys</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Zekisys | zekisys.com | Driven by your success</p>
+        </footer>
+    </div>
+</body>
+</html>
